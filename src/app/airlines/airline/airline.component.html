@@ -1,0 +1,128 @@
+<form name=empform #form="ngForm" autocomplete="off" novalidate
+    (ngSubmit)="onSubmit(form)">
+    <!--Id-->
+    <input type="hidden" name="id" [(ngModel)]="airlineService.formData.id">
+
+    <!--flightName-->
+    <div class="form-group">
+        <label>Full Name</label>
+        <input name="flightName" id="flightName"
+            #FlightName="ngModel" 
+            [(ngModel)]="airlineService.formData.flightName"
+            class="form-control" placeholder="Enter Full Name"
+            minlength="8" maxlength="25" required 
+            [ngClass]="{'is-invalid':flightName.touched && flightName.invalid}">
+        <div class="validation-error" 
+            *ngIf="flightName.touched && flightName.invalid">
+            <div *ngIf="flightName.errors">
+                Invalid flightName 
+            </div>
+        </div> 
+
+    </div>
+    <!--depAirport-->
+    <div class="form-group">
+        <label>depAirport</label>
+        <input name="depAirport" id="depAirport"
+            #depAirport="ngModel" 
+            [(ngModel)]="airlineService.formData.depAirport"
+            class="form-control" placeholder="Enter depAirport"
+            minlength="8" maxlength="25" required 
+            [ngClass]="{'is-invalid':depAirport.touched && depAirport.invalid}">
+        <div class="validation-error" 
+            *ngIf="depAirport.touched && depAirport.invalid">
+            <div *ngIf="depAirport.errors">
+                depAirport is Required
+            </div>
+        </div>
+    </div>
+
+    
+    <!--depDate-->
+    <div class="form-group">
+        <label>depDate</label>
+        <input type="date" name="depDate" id="depDate"
+            #depDate="ngModel" 
+            [(ngModel)]="airlineService.formData.depDate"
+            class="form-control" required 
+            [ngClass]="{'is-invalid':depDate.touched && depDate.invalid}">
+        <div class="validation-error" 
+            *ngIf="depDate.touched && depDate.invalid">
+            <div *ngIf="depDate.errors">
+                Date is Required
+            </div>
+        </div>
+    </div>
+    <depTime>
+    <div class="form-group">
+        <label>depTime</label>
+        <input name="depTime" id="depTime"
+            #depTime="ngModel" 
+            [(ngModel)]="airlineService.formData.depTime"
+            class="form-control" placeholder="Enter depTime ID"
+            minlength="1" maxlength="1" required 
+            [ngClass]="{'is-invalid':depTime.touched && depTime.invalid}">
+        <div class="validation-error" 
+            *ngIf="depTime.touched && depTime.invalid">
+            <div *ngIf="depTime.errors">
+                depTime ID is Required
+            </div>
+        </div>
+    </div>
+    <arrAirport>
+    <div class="form-group">
+        <label>arrAirport</label>
+        <select name="arrAirport" id="arrAirport"
+          class="form-control" required #arrAirport="ngModel"
+          [(ngModel)]="airlineService.formData.arrAirport">
+          <option value=0 disabled>Choose Department</option>
+          <option *ngFor="let dept of employeeService.arrAirport"
+              value="{{arr.arrAirport}}">{{arr.arrAirport}}</option>"
+        
+        </select>
+        <div class="validation-error" 
+            *ngIf="depTime.touched && depTime.invalid">
+            <div *ngIf="depTime.errors">
+                depTime is Required
+            </div>
+            <arrDate>
+                <div class="form-group">
+                    <label>arrDate</label>
+                    <input name="arrDate" id="arrDate"
+                        #arrDate="ngModel" 
+                        [(ngModel)]="airlineService.formData.arrDate"
+                        class="form-control" placeholder="Enter arrDate"
+                        minlength="1" maxlength="1" required 
+                        [ngClass]="{'is-invalid':arrDate.touched && arrDate.invalid}">
+                    <div class="validation-error" 
+                        *ngIf="arrDate.touched && arrDate.invalid">
+                        <div *ngIf="arrDate.errors">
+                            arrDate ID is Required
+                        </div>
+                    </div>
+                </div>>
+                <div class="form-group">
+                    <label>depTime</label>
+                    <input name="depTime" id="depTime"
+                        #depTime="ngModel" 
+                        [(ngModel)]="airlineService.formData.depTime"
+                        class="form-control" placeholder="Enter depTime ID"
+                        minlength="1" maxlength="1" required 
+                        [ngClass]="{'is-invalid':depTime.touched && depTime.invalid}">
+                    <div class="validation-error" 
+                        *ngIf="depTime.touched && depTime.invalid">
+                        <div *ngIf="depTime.errors">
+                            depTime ID is Required
+                        </div>
+                    </div>
+                </div>
+
+    </div>
+</div>
+<div class="form-group">
+      <button type="submit" [disabled]="!(form.valid && form.dirty)"
+      class="btn btn-lg btn-primary form-control">Submit</button>
+      
+
+</div>
+</form>
